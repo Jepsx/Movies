@@ -1,4 +1,5 @@
 import { API_KEY } from "./secrets.js";
+import  {navigator} from './navigation.js';
 
 const api = axios.create({
     baseURL: 'https://api.themoviedb.org/3/',
@@ -8,6 +9,7 @@ const api = axios.create({
         'api_key':API_KEY
     }
 })
+
 //Axios
 const getTrendingMoviesPreview = async ()=>{
     const {data} = await api('trending/movie/day');
@@ -97,5 +99,7 @@ const getCategoriesPreview = async ()=>{
 
 //     });
 // }
-getCategoriesPreview();
-getTrendingMoviesPreview();
+window.addEventListener('hashchange',navigator,false);
+window.addEventListener('DOMContentLoaded',navigator,false);
+export {getCategoriesPreview,
+getTrendingMoviesPreview}
