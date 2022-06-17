@@ -1,5 +1,5 @@
 import{getCategoriesPreview,
-    getTrendingMoviesPreview} from './main.js'
+    getTrendingMoviesPreview,getMoviesById} from './main.js'
 
 import{headerSection,arrowBtn,headerCategoryTitle,headerTitle,searchForm, trendingPreviewSection, categoriesPreviewSection,genericSection, movieDetailSection} from './nodes.js'
 
@@ -51,6 +51,15 @@ const categoriesPage = ()=>{
     genericSection.classList.remove('inactive');
     movieDetailSection.classList.add('inactive');
 
+    let [_,categoryData]=location.hash.split('=');
+    let [categoryId,categoryName] = categoryData.split('-');
+    headerCategoryTitle.innerHTML=categoryName;
+    getMoviesById(categoryId);
+    window.scrollTo({
+        top: 100,
+        left: 100,
+        behavior: 'smooth'
+      });
 }
 const movieDetailsPage = ()=>{
     headerSection.classList.add('header-container--long');
