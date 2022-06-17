@@ -26,4 +26,4 @@ const movieDetailTitle = document.querySelector('.movieDetail-title');
 const movieDetailDescription = document.querySelector('.movieDetail-description');
 const movieDetailScore = document.querySelector('.movieDetail-score');
 
-export { trendingMoviesPreviewList,categoriesPreviewList,headerSection,arrowBtn,headerCategoryTitle,headerTitle,searchForm,trendingPreviewSection,categoriesPreviewSection,genericSection,movieDetailSection};
+export { trendingMoviesPreviewList,categoriesPreviewList,headerSection,arrowBtn,headerCategoryTitle,headerTitle,searchForm,trendingPreviewSection,categoriesPreviewSection,genericSection,movieDetailSection,searchFormBtn,trendingBtn};

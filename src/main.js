@@ -1,6 +1,6 @@
 import { API_KEY } from "./secrets.js";
 import  {navigator} from './navigation.js';
-import { categoriesPreviewList, trendingMoviesPreviewList } from "./nodes.js";
+import { categoriesPreviewList, trendingMoviesPreviewList,searchFormBtn, trendingBtn, arrowBtn } from "./nodes.js";
 
 const api = axios.create({
     baseURL: 'https://api.themoviedb.org/3/',
@@ -110,6 +110,19 @@ const getCategoriesPreview = async ()=>{
 
 //     });
 // }
+
+searchFormBtn.addEventListener('click',()=>{
+    location.hash = 'search';
+});
+trendingBtn.addEventListener('click',()=>{
+    location.hash = 'trends';
+});
+
+arrowBtn.addEventListener('click',()=>{
+    location.hash ='';
+})
+
+
 window.addEventListener('hashchange',navigator,false);
 window.addEventListener('DOMContentLoaded',navigator,false);
 export {getCategoriesPreview,
