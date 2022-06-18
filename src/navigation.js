@@ -1,5 +1,5 @@
 import{getCategoriesPreview,
-    getTrendingMoviesPreview,getMoviesById} from './main.js'
+    getTrendingMoviesPreview,getMoviesById,getMoviesBySearch, getTrendingMovies,getMovieById} from './main.js'
 
 import{headerSection,arrowBtn,headerCategoryTitle,headerTitle,searchForm, trendingPreviewSection, categoriesPreviewSection,genericSection, movieDetailSection} from './nodes.js'
 
@@ -16,6 +16,8 @@ const navigator = ()=>{
     }else{
         homePage();
     }
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
 }
 
 const homePage = ()=>{
@@ -55,11 +57,6 @@ const categoriesPage = ()=>{
     let [categoryId,categoryName] = categoryData.split('-');
     headerCategoryTitle.innerHTML=categoryName;
     getMoviesById(categoryId);
-    window.scrollTo({
-        top: 100,
-        left: 100,
-        behavior: 'smooth'
-      });
 }
 const movieDetailsPage = ()=>{
     headerSection.classList.add('header-container--long');
@@ -74,6 +71,9 @@ const movieDetailsPage = ()=>{
     categoriesPreviewSection.classList.add('inactive');
     genericSection.classList.add('inactive');
     movieDetailSection.classList.remove('inactive');
+
+    let [_,movieId]=location.hash.split('=');
+    getMovieById(movieId);
 }
 const searchPage = ()=>{
     
@@ -82,13 +82,16 @@ const searchPage = ()=>{
     arrowBtn.classList.remove('inactive');
     arrowBtn.classList.remove('header-arrow--white');
     headerTitle.classList.add('inactive');
-    headerCategoryTitle.classList.remove('inactive');
+    headerCategoryTitle.classList.add('inactive');
     searchForm.classList.remove('inactive');
 
     trendingPreviewSection.classList.add('inactive');
     categoriesPreviewSection.classList.add('inactive');
     genericSection.classList.remove('inactive');
     movieDetailSection.classList.add('inactive');
+
+    let [_,query]=location.hash.split('=');
+    getMoviesBySearch(query);
 }
 const trendsPage = ()=>{
     headerSection.classList.remove('header-container--long');
@@ -97,12 +100,15 @@ const trendsPage = ()=>{
     arrowBtn.classList.remove('header-arrow--white');
     headerTitle.classList.add('inactive');
     headerCategoryTitle.classList.remove('inactive');
+    headerCategoryTitle.innerHTML='Trends';
     searchForm.classList.add('inactive');
 
     trendingPreviewSection.classList.add('inactive');
     categoriesPreviewSection.classList.add('inactive');
     genericSection.classList.remove('inactive');
     movieDetailSection.classList.add('inactive');
+
+    getTrendingMovies();
 }
 
 export {navigator};
