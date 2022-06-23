@@ -1,7 +1,8 @@
-import { API_KEY } from "./secrets.js";
+// import { API_KEY } from "./secrets.js";
 import  {navigator} from './navigation.js';
 import { categoriesPreviewList, trendingMoviesPreviewList,searchFormBtn, trendingBtn, arrowBtn, genericSection, searchFormInput,movieDetailTitle,movieDetailDescription,movieDetailScore, movieDetailCategoriesList, headerSection,relatedMoviesContainer } from "./nodes.js";
 
+const API_KEY='ae260be5c599e593d15365da9b45c3bc';
 const api = axios.create({
     baseURL: 'https://api.themoviedb.org/3/',
     headers:{'Content-Type':'application/json;charset=utf-8'
